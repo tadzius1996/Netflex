@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react'
 import { baseUrl } from '../constants/movie'
 import { Movie } from '../typings'
 
-
-
+import { modalState, movieState } from '../atoms/modalAtom'
+import { useRecoilState } from 'recoil'
 import Image from 'next/image'
 
 interface Props {
@@ -13,7 +13,8 @@ interface Props {
 
 function Banner({ netflixOriginals }: Props) {
   const [movie, setMovie] = useState<Movie | null>(null)
-
+  const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
+  const [showModal, setShowModal] = useRecoilState(modalState)
 
   useEffect(() => {
     setMovie(
@@ -28,7 +29,7 @@ function Banner({ netflixOriginals }: Props) {
           layout="fill"
           src={`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`}
           objectFit="cover"
-          alt="cover"
+          alt='cover'
         />
       </div>
 
@@ -47,7 +48,8 @@ function Banner({ netflixOriginals }: Props) {
         <button
           className="bannerButton bg-[gray]/70"
           onClick={() => {
-           
+            setCurrentMovie(movie)
+            setShowModal(true)
           }}
         >
           <InformationCircleIcon className="h-5 w-5 md:h-8 md:w-8" /> More Info
