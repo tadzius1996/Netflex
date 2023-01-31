@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { BellIcon, SearchIcon } from '@heroicons/react/solid'
-import useAuth from '../hooks/useAuth'
+
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import BasicMenu from './BasicMenu'
@@ -25,7 +25,7 @@ function Header() {
   }, [])
 
   return (
-    <header className={`${isScrolled && 'bg-[#141414]'}`}>
+    <header className={`${isScrolled && 'bg-red-500'}`}>
       <div className="flex items-center space-x-2 md:space-x-10">
         <img
           src="https://rb.gy/ulxxee"
