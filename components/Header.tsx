@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { BellIcon, SearchIcon } from '@heroicons/react/solid'
-
+import logo from '../public/logo.png'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import BasicMenu from './BasicMenu'
@@ -29,12 +29,8 @@ function Header() {
   return (
     <header className={`${isScrolled && 'bg-red-500'}`}>
       <div className="flex items-center space-x-2 md:space-x-10">
-        <img
-          src="/logo.png"
-          width={100}
-          height={100}
-          className="cursor-pointer object-contain"
-        />
+        <Image src={logo} height={100} width={100} alt='logo' className="cursor-pointer object-contain"/>
+        
 
         <BasicMenu />
 
