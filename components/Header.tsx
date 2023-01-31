@@ -7,6 +7,7 @@ import BasicMenu from './BasicMenu'
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const { logout } = useAuth()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,12 +24,13 @@ function Header() {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
+  
 
   return (
     <header className={`${isScrolled && 'bg-[#141414]'}`}>
       <div className="flex items-center space-x-2 md:space-x-10">
         <img
-          src="https://rb.gy/ulxxee"
+          src="/logo.png"
           width={100}
           height={100}
           className="cursor-pointer object-contain"
